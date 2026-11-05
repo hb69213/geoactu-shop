@@ -1,0 +1,14 @@
+<!doctype html><html lang="fr"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Connexion TikTok · Geo-Actu Shop</title>
+<style>body{font-family:system-ui,sans-serif;max-width:680px;margin:40px auto;padding:0 16px;line-height:1.6;color:#111;background:#fff}code{background:#eee;padding:6px 10px;display:block;word-break:break-all;margin:12px 0}</style>
+<h1>Connexion à TikTok</h1>
+<p id="msg">Lecture du code…</p><code id="code"></code>
+<script>
+const p=new URLSearchParams(location.search);
+const c=p.get("code"), e=p.get("error");
+// le code part directement vers le script local de l'auteur (127.0.0.1), jamais vers un tiers
+if (c && p.get("state")) { location.replace("http://127.0.0.1:8766/callback" + location.search); }
+document.getElementById("msg").textContent = c ? "Connexion réussie, retour vers ton Mac… Si rien ne se passe, relance le script de connexion." : ("Erreur : " + (e||"aucun code reçu"));
+document.getElementById("code").textContent = c || "";
+</script>
+</html>
